@@ -24,6 +24,10 @@ public class FoxAndMountainEasy {
 			return true;
 		}
 		
+		if (climb < 0) {
+			return false;
+		}
+		
 		int upClimb = climb + nAfterHistory;
 		if (hn > climb && upClimb >= hn && isEven(upClimb - hn)) {
 			return true;
@@ -56,7 +60,7 @@ public class FoxAndMountainEasy {
 		System.out.println(possible(4, 0, 4, "UU")); 			// YES
 		System.out.println(possible(4, 0, 4, "D")); 			// NO
 		System.out.println(possible(4, 100000, 100000, "DDU")); // YES
-		System.out.println(possible(4, 0, 0, "DDU")); 			// NO <---------- LIES!!! "DDUU" or "UDDU" works
+		System.out.println(possible(4, 0, 0, "DDU")); 			// NO
 		System.out.println(possible(20, 20, 20, "UDUDUDUDUD"));	// YES
 		System.out.println(possible(20, 0, 0, "UUUUUUUUUU"));	// YES
 		System.out.println(possible(20, 0, 0, "UUUUUUUUUUU"));	// NO
