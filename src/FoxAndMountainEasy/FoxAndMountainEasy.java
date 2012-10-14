@@ -5,7 +5,7 @@ public class FoxAndMountainEasy {
 	 * steps: n
 	 * start height: h0
 	 * end height: hn
-	 * known history:history
+	 * known history: history
 	 */
 	public static String possible(int n, int h0, int hn, String history) {
 		if (possibleHelper(n, h0, hn, history)) {
