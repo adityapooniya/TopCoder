@@ -20,37 +20,18 @@ public class FoxAndMountainEasy {
 		int nAfterHistory = n - history.length();
 		
 		int climb = h0 + intHistory;
-//		System.out.println(String.valueOf("intHistory: " + intHistory));
-//		System.out.println(String.valueOf("nAfterHistory: " + nAfterHistory));
-//		System.out.println(String.valueOf("climb: " + climb));
 		if (climb == hn) {
 			return true;
 		}
 		
-		int upClimb = climb;
-		int upCount = nAfterHistory;
-		while(upCount > 0) {
-			upCount--;
-			if (++upClimb == hn) {
-				if (isEven(upCount)) {
-					return true;
-				} else {
-					break;
-				}
-			}
+		int upClimb = climb + nAfterHistory;
+		if (hn > climb && upClimb >= hn && isEven(upClimb - hn)) {
+			return true;
 		}
 		
-		int downClimb = climb;
-		int downCount = nAfterHistory;
-		while (downCount > 0) {
-			downCount--;
-			if (--downClimb == hn) {
-				if (isEven(downCount)) {
-					return true;
-				} else {
-					break;
-				}
-			}
+		int downClimb = climb - nAfterHistory;
+		if (hn < climb && downClimb <= hn && isEven(downClimb - hn)) {
+			return true;
 		}
 		
 		return false;
@@ -71,13 +52,14 @@ public class FoxAndMountainEasy {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(possible(4, 0, 4, "UU")); // YES
-		System.out.println(possible(4, 0, 4, "D")); // NO
+		// TopCoder Examples									// Given Answers 
+		System.out.println(possible(4, 0, 4, "UU")); 			// YES
+		System.out.println(possible(4, 0, 4, "D")); 			// NO
 		System.out.println(possible(4, 100000, 100000, "DDU")); // YES
-		System.out.println(possible(4, 0, 0, "DDU")); // NO <---------- LIES!!!! "DDUU" works
-		System.out.println(possible(20, 20, 20, "UDUDUDUDUD")); // YES
-		System.out.println(possible(20, 0, 0, "UUUUUUUUUU")); // YES
-		System.out.println(possible(20, 0, 0, "UUUUUUUUUUU")); // NO
+		System.out.println(possible(4, 0, 0, "DDU")); 			// NO <---------- LIES!!! "DDUU" or "UDDU" works
+		System.out.println(possible(20, 20, 20, "UDUDUDUDUD"));	// YES
+		System.out.println(possible(20, 0, 0, "UUUUUUUUUU"));	// YES
+		System.out.println(possible(20, 0, 0, "UUUUUUUUUUU"));	// NO
 	}
 }
 
