@@ -16,12 +16,10 @@ public class ChocolateBar {
 			int curCharIndex = letters.charAt(i) - 'a';
 			int lastI = lastIndex[curCharIndex];
 			
-			if (lastI == -1 || lastI < i - curMax) {
-				if (++curMax > answer) {
-					answer = curMax;
-				}
-			} else {
+			if (lastI >= i - curMax) {
 				curMax = i - lastI;
+			} else if (++curMax > answer) {
+					answer = curMax;
 			}
 			lastIndex[curCharIndex] = i;
 		}
